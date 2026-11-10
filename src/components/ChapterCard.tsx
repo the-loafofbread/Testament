@@ -9,6 +9,8 @@ interface ChapterCardProps {
   fontSize: 'sm' | 'md' | 'lg' | 'xl';
   onPlaySpeech?: (text: string) => void;
   speakingText?: string | null;
+  activeGlowingVerseId?: string | null;
+  onToggleVerseGlow?: (verseId: string) => void;
 }
 
 export const ChapterCard: React.FC<ChapterCardProps> = ({
@@ -17,6 +19,8 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({
   fontSize,
   onPlaySpeech,
   speakingText,
+  activeGlowingVerseId,
+  onToggleVerseGlow,
 }) => {
   const [copiedAll, setCopiedAll] = useState(false);
 
@@ -42,7 +46,7 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({
   return (
     <article
       id={chapter.id}
-      className="my-6 sm:my-8 rounded-2xl bg-[#1d1915] border border-[#3d342a] p-4 sm:p-7 md:p-8 shadow-xl relative scroll-mt-24 transition-all"
+      className="my-6 sm:my-8 rounded-2xl bg-[#1d1915] border border-[#3d342a] hover:border-yellow-500/35 p-4 sm:p-7 md:p-8 shadow-xl hover:shadow-[0_8px_32px_rgba(0,0,0,0.6)] relative scroll-mt-24 transition-all duration-300"
     >
       {/* Chapter Title Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 mb-4 border-b border-[#362e25] gap-3">
@@ -86,18 +90,23 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({
 
       {/* Verses Container */}
       <div className="space-y-1 divide-y divide-[#2d261e]/60">
-        {chapter.verses.map((verse, idx) => (
-          <VerseItem
-            key={verse.num}
-            verse={verse}
-            chapter={chapter}
-            book={book}
-            isFirstVerse={idx === 0}
-            fontSize={fontSize}
-            onPlaySpeech={onPlaySpeech}
-            isSpeakingThis={speakingText === verse.text}
-          />
-        ))}
+        {chapter.verses.map((verse, idx) => {
+          const verseElementId = `${chapter.id}-v-${verse.num.replace(':', '-')}`;
+          return (
+            <VerseItem
+              key={verse.num}
+              verse={verse}
+              chapter={chapter}
+              book={book}
+              isFirstVerse={idx === 0}
+              fontSize={fontSize}
+              onPlaySpeech={onPlaySpeech}
+              isSpeakingThis={speakingText === verse.text}
+              isPressed={activeGlowingVerseId === verseElementId}
+              onTogglePress={() => onToggleVerseGlow?.(verseElementId)}
+            />
+          );
+        })}
       </div>
     </article>
   );

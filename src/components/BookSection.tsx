@@ -7,6 +7,8 @@ interface BookSectionProps {
   fontSize: 'sm' | 'md' | 'lg' | 'xl';
   onPlaySpeech?: (text: string) => void;
   speakingText?: string | null;
+  activeGlowingVerseId?: string | null;
+  onToggleVerseGlow?: (verseId: string) => void;
 }
 
 export const BookSection: React.FC<BookSectionProps> = ({
@@ -14,6 +16,8 @@ export const BookSection: React.FC<BookSectionProps> = ({
   fontSize,
   onPlaySpeech,
   speakingText,
+  activeGlowingVerseId,
+  onToggleVerseGlow,
 }) => {
   return (
     <section id={book.id} className="scroll-mt-24 pt-4 sm:pt-6 pb-8 sm:pb-12">
@@ -55,6 +59,8 @@ export const BookSection: React.FC<BookSectionProps> = ({
             fontSize={fontSize}
             onPlaySpeech={onPlaySpeech}
             speakingText={speakingText}
+            activeGlowingVerseId={activeGlowingVerseId}
+            onToggleVerseGlow={onToggleVerseGlow}
           />
         ))}
       </div>

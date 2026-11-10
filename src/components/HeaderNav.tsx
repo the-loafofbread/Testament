@@ -351,8 +351,8 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
 
       {/* Hero Header Section */}
       <div id="header" className="pt-8 sm:pt-12 pb-6 sm:pb-8 text-center scroll-mt-20 px-4">
-        {/* Halo Bread Icon */}
-        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-[#221c17] border border-yellow-500/30 text-4xl sm:text-5xl mb-4 shadow-[0_0_30px_rgba(234,179,8,0.15)] select-none">
+        {/* Halo Bread Icon with sacred hovering animation */}
+        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-[#221c17] border border-yellow-500/35 text-4xl sm:text-5xl mb-4 shadow-[0_0_30px_rgba(234,179,8,0.2)] select-none halo-bread">
           {breadTestamentData.header.haloIcon}
         </div>
 

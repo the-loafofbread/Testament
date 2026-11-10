@@ -64,6 +64,22 @@
   animation-iteration-count: infinite;
 }
 
+/* Hero Halo Floating Breath */
+@keyframes haloFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 16px rgba(234, 179, 8, 0.25));
+  }
+  50% {
+    transform: translateY(-5px) scale(1.04);
+    filter: drop-shadow(0 0 28px rgba(254, 240, 138, 0.45));
+  }
+}
+
+.halo-bread {
+  animation: haloFloat 4.5s ease-in-out infinite;
+}
+
 /* Golden pulse glow for highlighted search results */
 @keyframes goldPulse {
   0%, 100% {
@@ -79,6 +95,20 @@
 .highlight-verse {
   animation: goldPulse 1.8s ease-in-out 3;
   border-radius: 0.75rem;
+}
+
+/* Pressed / Active verse illuminated glow with butter-smooth breathing */
+@keyframes verseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 1.5px rgba(254, 240, 138, 0.75), 0 0 25px rgba(234, 179, 8, 0.2), 0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(254, 240, 138, 0.95), 0 0 38px rgba(234, 179, 8, 0.35), 0 8px 28px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.verse-illuminated {
+  animation: verseGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* Custom scrollbar */

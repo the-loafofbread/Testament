@@ -129,7 +129,7 @@ export const BenedictionSection: React.FC<BenedictionSectionProps> = ({
 
         {/* Benediction Central Quote */}
         {benediction.quote && (
-          <div className="my-8 sm:my-10 max-w-xl mx-auto p-5 sm:p-7 rounded-2xl bg-[#161310] border-x-4 border-yellow-400 shadow-inner">
+          <div className="my-8 sm:my-10 max-w-xl mx-auto p-5 sm:p-7 rounded-2xl bg-[#161310] border-x-4 border-yellow-400 shadow-[0_0_25px_rgba(234,179,8,0.12)] hover:shadow-[0_0_35px_rgba(254,240,138,0.22)] hover:scale-[1.01] transition-all duration-300">
             <p className="font-cinzel text-lg sm:text-2xl md:text-3xl font-extrabold text-[#fef08a] italic tracking-wide">
               &ldquo;{benediction.quote}&rdquo;
             </p>

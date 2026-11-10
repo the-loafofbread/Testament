@@ -24,6 +24,11 @@ export default function App() {
   const [viewMode, setViewMode] = useState<'continuous' | 'single'>('continuous');
   const [selectedBookId, setSelectedBookId] = useState<string>('all');
   const [speakingText, setSpeakingText] = useState<string | null>(null);
+  const [activeGlowingVerseId, setActiveGlowingVerseId] = useState<string | null>(null);
+
+  const handleToggleVerseGlow = (verseId: string) => {
+    setActiveGlowingVerseId((prev) => (prev === verseId ? null : verseId));
+  };
 
   // Global hotkeys (e.g. / or Ctrl+K to open search)
   useEffect(() => {
@@ -52,6 +57,11 @@ export default function App() {
 
   // Smooth scroll and illuminate target
   const navigateToElement = (targetId: string) => {
+    // If target is a verse, set it as the single active glowing verse
+    if (targetId.includes('-v-')) {
+      setActiveGlowingVerseId(targetId);
+    }
+
     // If we're in single-book mode, determine which book contains this element
     if (viewMode === 'single') {
       if (targetId.startsWith('book-')) {
@@ -219,6 +229,8 @@ export default function App() {
                     fontSize={fontSize}
                     onPlaySpeech={handlePlaySpeech}
                     speakingText={speakingText}
+                    activeGlowingVerseId={activeGlowingVerseId}
+                    onToggleVerseGlow={handleToggleVerseGlow}
                   />
 
                   {/* Prev/Next Book Pagination Controls */}
@@ -270,6 +282,8 @@ export default function App() {
                   fontSize={fontSize}
                   onPlaySpeech={handlePlaySpeech}
                   speakingText={speakingText}
+                  activeGlowingVerseId={activeGlowingVerseId}
+                  onToggleVerseGlow={handleToggleVerseGlow}
                 />
               ))}
 
