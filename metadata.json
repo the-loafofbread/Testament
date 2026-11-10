@@ -1,0 +1,6 @@
+{
+  "name": "The Bread Testament",
+  "description": "The Sacred Scriptures of the Breadkind — Complete verses, chapters, books, and prayers of The Bread Testament with search and warm parchment aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

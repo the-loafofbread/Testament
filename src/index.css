@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Pure warm espresso brown & pastel yellow - NO RED TONES */
+    --bg-deep: #151310;
+    --bg-card: #1f1b16;
+    --bg-card-subtle: #27221c;
+    --bg-card-elevated: #322c25;
+    --gold-light: #fef08a; /* pastel yellow */
+    --gold-main: #eab308; /* pure golden yellow */
+    --gold-soft: #fef9c3; /* soft butter cream */
+    --gold-dim: #a16207; /* golden hazelnut */
+    --text-warm: #fefce8; /* warm creamy white */
+    --text-muted: #b8ad9c; /* muted parchment sand */
+    --border-gold: rgba(234, 179, 8, 0.25);
+  }
+
+  body {
+    background-color: #151310;
+    color: #fefce8;
+    font-family: 'Faustina', Georgia, serif;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-faustina {
+  font-family: 'Faustina', serif;
+}
+
+.font-medieval {
+  font-family: 'MedievalSharp', cursive;
+}
+
+/* Floating crumbs animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(105vh) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.crumb-particle {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Golden pulse glow for highlighted search results */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(254, 240, 138, 0.5), 0 0 25px rgba(234, 179, 8, 0.3);
+    background-color: rgba(234, 179, 8, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(254, 240, 138, 0.9), 0 0 45px rgba(234, 179, 8, 0.5);
+    background-color: rgba(234, 179, 8, 0.25);
+  }
+}
+
+.highlight-verse {
+  animation: goldPulse 1.8s ease-in-out 3;
+  border-radius: 0.75rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #151310;
+}
+::-webkit-scrollbar-thumb {
+  background: #362f27;
+  border-radius: 4px;
+  border: 1px solid rgba(254, 240, 138, 0.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4136;
+}
+
+/* Hide scrollbar utility for clean mobile horizontal navigation */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
